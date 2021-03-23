@@ -18,36 +18,31 @@ namespace ocmariadbconnectivity
     {        
         public void CheckConn()
         {
-            try
+            while(true)
             {
-                var constr = @"server=localhost;port=3306;database=sampledb;uid=raghav;password=raghav;";
-                using (MySqlConnection conn = new MySqlConnection(constr))
+                try
                 {
-                    conn.Open();
-                    MySqlCommand cmd = new MySqlCommand("select * from employee", conn);
-
-                    using (var reader = cmd.ExecuteReader())
+                    var constr = @"server=localhost;port=3305;database=sampledb;uid=raghav;password=raghav;";
+                    using (MySqlConnection conn = new MySqlConnection(constr))
                     {
-                        while (reader.Read())
+                        conn.Open();
+                        MySqlCommand cmd = new MySqlCommand("select * from employee", conn);
+
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            Console.WriteLine(reader[0]);                            
+                            while (reader.Read())
+                            {
+                                Console.WriteLine(reader[0]);
+                            }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                System.Threading.Thread.Sleep(30000);
             }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }           
-
-            // await connection.OpenAsync();
-            //using var command = new MySqlCommand("SELECT field FROM table;", connection);
-            //using var reader = await command.ExecuteReaderAsync();
-            //while (await reader.ReadAsync())
-            //{
-            //    var value = reader.GetValue(0);
-            //    // do something with 'value'
-            //}
         }
     }
 }
