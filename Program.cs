@@ -20,7 +20,7 @@ namespace ocmariadbconnectivity
         {
             try
             {
-                var constr = @"server=localhost;port=3305;database=sampledb;uid=raghav;password=raghav;";
+                var constr = @"server=localhost;port=3306;database=sampledb;uid=raghav;password=raghav;";
                 using (MySqlConnection conn = new MySqlConnection(constr))
                 {
                     conn.Open();
