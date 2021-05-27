@@ -22,7 +22,7 @@ namespace ocmariadbconnectivity
             {
                 try
                 {
-                    var constr = @"server=mariadb;database=sampledb;uid=raghav;password=raghav;"; 
+                    var constr = @"server=mariadb;database=sampledb;uid=admin;password=admin;"; 
                     Console.WriteLine(constr);
                     using (MySqlConnection conn = new MySqlConnection(constr))
                     {
